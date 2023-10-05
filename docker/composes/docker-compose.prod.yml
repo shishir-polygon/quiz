@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  quiz-service:
+    environment:
+      SERVICE_NAME: app
+    ports:
+      - ${PORT}:80
+    volumes:
+      - ../nginx/logs:/var/log/nginx
+    networks:
+      - quiz-service-network
+
+networks:
+  quiz-service-network:
+    driver: bridge
