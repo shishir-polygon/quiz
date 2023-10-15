@@ -12,6 +12,9 @@ class EncryptCookies extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        "sidebar_minimize_state",
+        "kt_aside_toggle_state",
+        "kt_aside_menu",
+        "data-kt-app-sidebar-minimize",
     ];
 }
