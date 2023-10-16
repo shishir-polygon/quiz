@@ -1448,19 +1448,19 @@
             <!--end::Content wrapper-->
         </div>
     <!--begin::Modal-->
-    <livewire:user.add-user-modal></livewire:user.add-user-modal>
+{{--    <livewire:user.add-user-modal></livewire:user.add-user-modal>--}}
     <!--end::Modal-->
-    @push('scripts')
-        <script>
-            document.getElementById('mySearchInput').addEventListener('keyup', function () {
-                window.LaravelDataTables['users-table'].search(this.value).draw();
-            });
-            document.addEventListener('livewire:load', function () {
-                Livewire.on('success', function () {
-                    $('#kt_modal_add_user').modal('hide');
-                    window.LaravelDataTables['users-table'].ajax.reload();
-                });
-            });
-        </script>
-    @endpush
+{{--    @push('scripts')--}}
+{{--        <script>--}}
+{{--            document.getElementById('mySearchInput').addEventListener('keyup', function () {--}}
+{{--                window.LaravelDataTables['users-table'].search(this.value).draw();--}}
+{{--            });--}}
+{{--            document.addEventListener('livewire:load', function () {--}}
+{{--                Livewire.on('success', function () {--}}
+{{--                    $('#kt_modal_add_user').modal('hide');--}}
+{{--                    window.LaravelDataTables['users-table'].ajax.reload();--}}
+{{--                });--}}
+{{--            });--}}
+{{--        </script>--}}
+{{--    @endpush--}}
 </x-default-layout>
