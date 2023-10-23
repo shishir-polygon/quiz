@@ -3,11 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Quiz\Course;
+use App\Models\Quiz\CourseQuizAttempt;
+use App\Models\Quiz\QuizHistory;
+use App\Models\Quiz\RewardHistory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Storage;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -56,5 +59,30 @@ class User extends Authenticatable
         }
 
         return $this->profile_photo_path;
+    }
+
+    public function scopeForUser($query, $userId)
+    {
+        return $query->where('id', $userId);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
+    }
+
+    public function quizAttempt()
+    {
+        return $this->hasOne(CourseQuizAttempt::class, 'user_id');
+    }
+
+    public function rewardHistory()
+    {
+        return $this->hasMany(RewardHistory::class, 'user_id');
+    }
+
+    public function quizHistory()
+    {
+        return $this->hasMany(QuizHistory::class, 'user_id');
     }
 }
